@@ -8,12 +8,15 @@ import Test exposing (Test, describe, fuzz)
 
 imgBaseDir : String
 imgBaseDir =
-    "./dist/assets/images"
+    "./assets/images/"
 
 
 testImg : Test
 testImg =
     describe "Path.img"
         [ fuzz string "computes full image path" <|
-            \randomString -> Expect.equal (imgBaseDir ++ randomString) (Path.img randomString)
+            \randomString ->
+                Expect.equal
+                    (imgBaseDir ++ randomString)
+                    (Path.img randomString)
         ]

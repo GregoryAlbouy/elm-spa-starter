@@ -3,7 +3,7 @@ module Path exposing (img)
 
 imgBaseDir : String
 imgBaseDir =
-    "./dist/assets/images"
+    "./assets/images/"
 
 
 img : String -> String
