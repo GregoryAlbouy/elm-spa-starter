@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production ./script/build",
-    "dev": "./script/build --watch",
+    "serve": "http-server-spa dist index.html 9999",
+    "dev": "./script/build --watch & npm run serve",
     "lint": "npx elm-format ./src/elm/**/*.elm --validate && npx elm-review",
     "lint:watch": "npx elm-review --watch",
     "test": "npx elm-test './src/elm/tests/**/*Tests.elm'",
@@ -24,6 +25,7 @@
     "esbuild-copy-static-files": "^0.1.0",
     "esbuild-plugin-elm": "^0.0.11-1",
     "esbuild-sass-plugin": "^2.2.6",
+    "http-server-spa": "^1.3.0",
     "postcss": "^8.4.14",
     "postcss-modules": "^4.3.1",
     "typescript": "^4.7.4"
