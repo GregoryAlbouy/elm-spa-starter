@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 esbuild
   .build({
-    entryPoints: ["./src/app.js"],
+    entryPoints: ["./src/app.ts"],
     bundle: true,
     outdir: "./dist",
     minify: isProduction,

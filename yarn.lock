@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/elm@^0.19.1":
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/@types/elm/-/elm-0.19.1.tgz#a021a91739ce7c117b83c04726b0ca8abe7090fb"
+  integrity sha512-GoKDyqw3jbiHyaUAdB4hj0ufuJo5bYqxmmWl7hbaJFewjccXLWN++oGMiGwp4q/Dq4RmMYReV85zkcLQ77+s1w==
+
 ajv@^6.12.3:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
@@ -849,6 +854,11 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==
+
+typescript@^4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 uri-js@^4.2.2:
   version "4.4.1"
