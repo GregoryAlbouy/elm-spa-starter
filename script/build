@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 const esbuild = require("esbuild");
-const ElmPlugin = require("esbuild-plugin-elm");
+const elmPlugin = require("esbuild-plugin-elm");
+const { sassPlugin, postcssModules } = require("esbuild-sass-plugin");
 
 const watch = process.argv.includes("--watch");
 const isProduction = process.env.NODE_ENV === "production";
@@ -13,11 +14,17 @@ esbuild
     outdir: "./dist",
     minify: isProduction,
     watch,
+    sourcemap: !isProduction && "inline",
     plugins: [
-      ElmPlugin({
+      elmPlugin({
         debug: !isProduction,
         optimize: isProduction,
         clearOnWatch: watch,
+      }),
+      sassPlugin({
+        transform: postcssModules({ basedir: "./src/scss" }),
+        sourceMap: !isProduction,
+        type: "css",
       }),
     ],
   })
