@@ -1,7 +1,8 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (h1, text)
+import Html exposing (h1, img, text)
+import Html.Attributes exposing (src)
 
 
 type alias Model =
@@ -15,7 +16,10 @@ type Msg
 view : Model -> Browser.Document Msg
 view model =
     { title = model
-    , body = [ h1 [] [ text model ] ]
+    , body =
+        [ h1 [] [ text model ]
+        , img [ src "assets/images/elm-logo.svg" ] []
+        ]
     }
 
 

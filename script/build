@@ -1,31 +1,47 @@
 #!/usr/bin/env node
 
+const path = require("path");
+
 const esbuild = require("esbuild");
+const copyStaticFilesPlugin = require("esbuild-copy-static-files");
 const elmPlugin = require("esbuild-plugin-elm");
 const { sassPlugin, postcssModules } = require("esbuild-sass-plugin");
 
 const watch = process.argv.includes("--watch");
 const isProduction = process.env.NODE_ENV === "production";
 
-esbuild
-  .build({
-    entryPoints: ["./src/app.ts"],
-    bundle: true,
-    outdir: "./dist",
-    minify: isProduction,
-    watch,
-    sourcemap: !isProduction && "inline",
-    plugins: [
-      elmPlugin({
-        debug: !isProduction,
-        optimize: isProduction,
-        clearOnWatch: watch,
-      }),
-      sassPlugin({
-        transform: postcssModules({ basedir: "./src/scss" }),
-        sourceMap: !isProduction,
-        type: "css",
-      }),
-    ],
-  })
-  .catch((_e) => process.exit(1));
+const SRC_DIR = "./src";
+const OUT_DIR = "./dist";
+const STATIC_DIR = "./static";
+
+function fromSource(localPath) {
+  return path.resolve(SRC_DIR, localPath);
+}
+
+(function main() {
+  esbuild
+    .build({
+      entryPoints: [fromSource("app.ts")],
+      bundle: true,
+      outdir: OUT_DIR,
+      minify: isProduction,
+      watch,
+      sourcemap: !isProduction && "inline",
+      plugins: [
+        copyStaticFilesPlugin({
+          src: STATIC_DIR,
+          dest: OUT_DIR,
+        }),
+        elmPlugin({
+          debug: !isProduction,
+          optimize: isProduction,
+          clearOnWatch: watch,
+        }),
+        sassPlugin({
+          transform: postcssModules({ basedir: fromSource("scss") }),
+          sourceMap: !isProduction,
+        }),
+      ],
+    })
+    .catch((_e) => process.exit(1));
+})();

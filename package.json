@@ -13,6 +13,7 @@
     "@types/elm": "^0.19.1",
     "elm": "^0.19.1-5",
     "esbuild": "^0.14.48",
+    "esbuild-copy-static-files": "^0.1.0",
     "esbuild-plugin-elm": "^0.0.11-1",
     "esbuild-sass-plugin": "^2.2.6",
     "postcss": "^8.4.14",
