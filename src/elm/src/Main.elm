@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Main exposing (Model, main)
 
 import Browser
 import Html exposing (h1, img, text)
@@ -10,11 +10,7 @@ type alias Model =
     String
 
 
-type Msg
-    = Nothing
-
-
-view : Model -> Browser.Document Msg
+view : Model -> Browser.Document msg
 view model =
     { title = model
     , body =
@@ -24,7 +20,7 @@ view model =
     }
 
 
-main : Program () Model Msg
+main : Program () Model msg
 main =
     Browser.document
         { init = \_ -> ( "Hello, World!", Cmd.none )

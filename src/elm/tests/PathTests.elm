@@ -1,9 +1,9 @@
-module PathTests exposing (..)
+module PathTests exposing (testImg)
 
 import Expect
 import Fuzz exposing (string)
 import Path
-import Test exposing (..)
+import Test exposing (Test, describe, fuzz)
 
 
 imgBaseDir : String
