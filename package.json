@@ -5,7 +5,13 @@
   "repository": "https://github.com/gregoryalbouy/elm-starter",
   "author": "Gregory Albouy <gregoryalbouy75@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production ./script/build",
+    "dev": "./script/build --watch"
+  },
   "devDependencies": {
-    "elm": "^0.19.1-5"
+    "elm": "^0.19.1-5",
+    "esbuild": "^0.14.48",
+    "esbuild-plugin-elm": "^0.0.11-1"
   }
 }
