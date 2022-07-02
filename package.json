@@ -9,11 +9,13 @@
     "build": "NODE_ENV=production ./script/build",
     "dev": "./script/build --watch",
     "test": "npx elm-test './src/elm/tests/**/*Tests.elm'",
-    "test:watch": "npx elm-test './src/elm/tests/**/*Tests.elm' --watch"
+    "test:watch": "npx elm-test './src/elm/tests/**/*Tests.elm' --watch",
+    "lint": "npx elm-format ./src/elm/**/*.elm --validate"
   },
   "devDependencies": {
     "@types/elm": "^0.19.1",
     "elm": "^0.19.1-5",
+    "elm-format": "^0.8.5",
     "elm-test": "^0.19.1-revision8",
     "esbuild": "^0.14.48",
     "esbuild-copy-static-files": "^0.1.0",
