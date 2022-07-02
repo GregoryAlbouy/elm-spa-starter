@@ -3,6 +3,7 @@ module Main exposing (main)
 import Browser
 import Html exposing (h1, img, text)
 import Html.Attributes exposing (src)
+import Path
 
 
 type alias Model =
@@ -18,7 +19,7 @@ view model =
     { title = model
     , body =
         [ h1 [] [ text model ]
-        , img [ src "assets/images/elm-logo.svg" ] []
+        , img [ src (Path.img "elm-logo.svg") ] []
         ]
     }
 
