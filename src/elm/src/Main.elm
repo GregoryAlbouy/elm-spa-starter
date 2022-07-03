@@ -1,8 +1,8 @@
 module Main exposing (Model, main)
 
 import Browser
-import Html exposing (h1, img, text)
-import Html.Attributes exposing (src)
+import Html exposing (Html, div, h1, img, text)
+import Html.Attributes exposing (class, src)
 import Path
 
 
@@ -14,10 +14,17 @@ view : Model -> Browser.Document msg
 view model =
     { title = model
     , body =
-        [ h1 [] [ text model ]
-        , img [ src (Path.img "elm-logo.svg") ] []
+        [ viewWelcome model
         ]
     }
+
+
+viewWelcome : String -> Html msg
+viewWelcome message =
+    div [ class "welcome" ]
+        [ h1 [] [ text message ]
+        , img [ src (Path.img "elm-logo.svg") ] []
+        ]
 
 
 main : Program () Model msg
