@@ -5,7 +5,9 @@ const path = require("path");
 const esbuild = require("esbuild");
 const copyStaticFilesPlugin = require("esbuild-copy-static-files");
 const elmPlugin = require("esbuild-plugin-elm");
-const { sassPlugin, postcssModules } = require("esbuild-sass-plugin");
+const { sassPlugin } = require("esbuild-sass-plugin");
+const postcss = require("postcss");
+const postcssPresetEnv = require("postcss-preset-env");
 
 const watch = process.argv.includes("--watch");
 const isProduction = process.env.NODE_ENV === "production";
@@ -21,7 +23,10 @@ function fromSource(localPath) {
 (function main() {
   esbuild
     .build({
-      entryPoints: [fromSource("app.ts")],
+      entryPoints: {
+        app: fromSource("app.ts"),
+        "assets/style/main": fromSource("scss/main.scss"),
+      },
       bundle: true,
       outdir: OUT_DIR,
       minify: isProduction,
@@ -38,8 +43,14 @@ function fromSource(localPath) {
           clearOnWatch: watch,
         }),
         sassPlugin({
-          transform: postcssModules({ basedir: fromSource("scss") }),
+          type: "css",
           sourceMap: !isProduction,
+          async transform(source, _) {
+            const { css } = await postcss([
+              postcssPresetEnv({ stage: 2 }),
+            ]).process(source);
+            return css;
+          },
         }),
       ],
     })
