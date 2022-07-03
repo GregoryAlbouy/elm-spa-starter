@@ -1,4 +1,4 @@
-import * as path from "path";
+import path from "path";
 
 import esbuild from "esbuild";
 import copyStaticFilesPlugin from "esbuild-copy-static-files";
