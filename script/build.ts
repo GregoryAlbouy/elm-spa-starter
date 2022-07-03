@@ -1,13 +1,11 @@
-#!/usr/bin/env node
+import * as path from "path";
 
-const path = require("path");
-
-const esbuild = require("esbuild");
-const copyStaticFilesPlugin = require("esbuild-copy-static-files");
-const elmPlugin = require("esbuild-plugin-elm");
-const { sassPlugin } = require("esbuild-sass-plugin");
-const postcss = require("postcss");
-const postcssPresetEnv = require("postcss-preset-env");
+import esbuild from "esbuild";
+import copyStaticFilesPlugin from "esbuild-copy-static-files";
+import elmPlugin from "esbuild-plugin-elm";
+import { sassPlugin } from "esbuild-sass-plugin";
+import postcss from "postcss";
+import postcssPresetEnv from "postcss-preset-env";
 
 const watch = process.argv.includes("--watch");
 const isProduction = process.env.NODE_ENV === "production";
@@ -16,7 +14,7 @@ const SRC_DIR = "./src";
 const OUT_DIR = "./dist";
 const STATIC_DIR = "./static";
 
-function fromSource(localPath) {
+function fromSource(localPath: string) {
   return path.resolve(SRC_DIR, localPath);
 }
 
@@ -45,7 +43,7 @@ function fromSource(localPath) {
         sassPlugin({
           type: "css",
           sourceMap: !isProduction,
-          async transform(source, _) {
+          async transform(source: string, _: string) {
             const { css } = await postcss([
               postcssPresetEnv({ stage: 2 }),
             ]).process(source);

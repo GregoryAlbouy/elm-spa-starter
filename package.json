@@ -6,9 +6,9 @@
   "author": "Gregory Albouy <gregoryalbouy75@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production ./script/build",
+    "build": "NODE_ENV=production ./script/run-ts build",
+    "dev": "./script/run-ts build --watch & npm run serve",
     "serve": "http-server-spa dist index.html 9999",
-    "dev": "./script/build --watch & npm run serve",
     "lint": "elm-format ./src/elm/**/*.elm --validate && elm-review",
     "lint:watch": "elm-review --watch",
     "test": "elm-test './src/elm/tests/**/*Tests.elm'",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@types/elm": "^0.19.1",
+    "@types/postcss-preset-env": "^7.7.0",
     "elm": "^0.19.1-5",
     "elm-format": "^0.8.5",
     "elm-json": "^0.2.12",
@@ -28,6 +29,7 @@
     "http-server-spa": "^1.3.0",
     "postcss": "^8.4.14",
     "postcss-preset-env": "^7.7.2",
+    "ts-node": "^10.8.2",
     "typescript": "^4.7.4"
   }
 }
