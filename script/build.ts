@@ -1,3 +1,4 @@
+import { existsSync, mkdirSync, statSync } from "fs";
 import path from "path";
 
 import esbuild from "esbuild";
@@ -76,7 +77,8 @@ function checkOrCreateDirectory(dirpath: string) {
   try {
     checkOrCreateDirectory(Directory.OUTPUT);
     await esbuild.build(buildOptions);
-  } catch (_: unknown) {
+  } catch (error: unknown) {
+    console.error(error);
     process.exit(1);
   }
 })();
