@@ -43,7 +43,7 @@ function getBuildOptions({
       elmPlugin({
         debug: !production,
         optimize: production,
-        clearOnWatch: watch,
+        clearOnWatch: false,
       }),
       sassPlugin({
         type: "css",
