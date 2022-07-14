@@ -7,9 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production ./script/run-ts build",
-    "dev": "npm run dev:watch & npm run dev:serve",
-    "dev:watch": "./script/run-ts build --watch",
-    "dev:serve": "http-server-spa dist index.html 9999",
+    "dev": "NODE_ENV=development ./script/run-ts dev",
     "lint": "elm-format ./src/elm/**/*.elm --validate && elm-review",
     "lint:watch": "elm-review --watch",
     "test": "elm-test './src/elm/tests/**/*Tests.elm'",
