@@ -1,6 +1,6 @@
 import path from "path";
 
-export const LOCAL_SERVE_PORT = "9999";
+export const LOCAL_PORT = "9999";
 
 export enum Directory {
   SOURCE = "src",

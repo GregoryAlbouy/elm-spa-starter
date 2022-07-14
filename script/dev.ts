@@ -1,6 +1,6 @@
 import { spawn } from "child_process";
 
-import { Directory, LOCAL_SERVE_PORT as LOCAL_PORT } from "./common/config";
+import { Directory, LOCAL_PORT } from "./common/config";
 import { runBuild } from "./common/run-build";
 
 (async function main() {
