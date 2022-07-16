@@ -8,7 +8,7 @@ import Test exposing (Test, describe, fuzz)
 
 imgBaseDir : String
 imgBaseDir =
-    "./assets/images/"
+    "/assets/images/"
 
 
 testImg : Test
