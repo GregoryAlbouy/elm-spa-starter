@@ -20,12 +20,10 @@ export function serveDist() {
     LOCAL_PORT,
   ]);
 
-  server.stdout.on("data", (buffer: Buffer) => {
-    console.log(buffer.toString());
-  });
-
   server.stderr.on("data", (buffer: Buffer) => {
     console.error(buffer.toString());
     process.exit(1);
   });
+
+  console.log(`Dev server: http://localhost:${LOCAL_PORT}`);
 }
